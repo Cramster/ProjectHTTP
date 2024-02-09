@@ -1,5 +1,7 @@
 package org.example.Model;
 
+import java.util.Objects;
+
 public class Product {
 
     public String make;
@@ -38,6 +40,19 @@ public class Product {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return year == product.year && Objects.equals(make, product.make) && Objects.equals(model, product.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(make, model, year);
     }
 
     @Override
