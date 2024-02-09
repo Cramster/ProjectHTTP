@@ -1,12 +1,10 @@
 package org.example.Model;
-
 import java.util.Objects;
 
 public class Seller {
     public String name;
 
     public Seller(){
-
     }
 
     public Seller(String name) {

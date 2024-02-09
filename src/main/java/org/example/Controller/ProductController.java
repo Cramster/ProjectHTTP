@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
 import org.example.Service.ProductService;
+import org.example.Service.SellerService;
 import org.example.Model.Product;
 
 import io.javalin.Javalin;
@@ -11,6 +12,25 @@ import java.util.List;
 
 public class ProductController {
 
+    SellerService sellerService;
+    ProductService productService;
+
+    public ProductController(SellerService sellerService, ProductService productService) {
+        this.sellerService = sellerService;
+        this.productService = productService;
+    }
+
+    public Javalin getAPI() {
+        Javalin api = Javalin.create();
+        api.get("health", context -> {
+            context.result("Server is running! :-)");
+        });
+        //GET + POST for both seller/product
+        return api;
+    }
+
+
+/*
     static ProductService productService;
 
     public ProductController() {
@@ -48,4 +68,7 @@ public class ProductController {
             //Jackson unable to parseJSON or user error so 400
         }
     }
+ */
+
+
 }

@@ -1,7 +1,5 @@
 package org.example.Service;
-
 import org.example.Model.Seller;
-
 import java.util.ArrayList;
 import java.util.List;
 
