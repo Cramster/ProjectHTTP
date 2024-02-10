@@ -1,4 +1,5 @@
 package org.example.Service;
+import org.example.Exception.ProductException;
 import org.example.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,10 @@ public class ProductService {
         return productList;
     }
 
-    public Product addProduct(Product p) {
+    public Product addProduct(Product p) throws ProductException {
+        if(p.getMake() == null || p.getModel() == null){
+            throw new ProductException("Make and Model fields must be non-null.");
+        }
         long id = (long) (Math.random() * Long.MAX_VALUE);
         p.setId(id);
         productList.add(p);
