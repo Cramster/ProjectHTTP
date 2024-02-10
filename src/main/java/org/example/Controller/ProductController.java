@@ -7,7 +7,6 @@ import org.example.Model.Seller;
 import org.example.Service.ProductService;
 import org.example.Service.SellerService;
 import org.example.Model.Product;
-
 import io.javalin.Javalin;
 import java.util.List;
 
@@ -49,8 +48,9 @@ public class ProductController {
             try{
                 ObjectMapper om = new ObjectMapper();
                 Product p = om.readValue(context.body(), Product.class);
-                productService.addProduct(p);
+                Product newProduct = productService.addProduct(p);
                 context.status(201);
+                context.json(newProduct);
             }catch(JsonProcessingException e){
                 context.status(400);
             }

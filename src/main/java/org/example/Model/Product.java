@@ -5,6 +5,15 @@ public class Product {
     public String make;
     public String model;
     public int year;
+    public long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Product() {
 

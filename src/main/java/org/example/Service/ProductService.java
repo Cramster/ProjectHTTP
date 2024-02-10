@@ -17,8 +17,11 @@ public class ProductService {
         return productList;
     }
 
-    public void addProduct(Product p) {
+    public Product addProduct(Product p) {
+        long id = (long) (Math.random() * Long.MAX_VALUE);
+        p.setId(id);
         productList.add(p);
+        return p;
     }
 
 
