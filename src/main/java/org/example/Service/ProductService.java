@@ -24,6 +24,15 @@ public class ProductService {
         return p;
     }
 
+    public Product getProductById(Long id){
+        for(int i = 0; i < productList.size(); i++){
+            Product currentProduct = productList.get(i);
+            if(productList.get(i).getId() == id){
+                return currentProduct;
+            }
+        }
+        return null;
+    }
 
 /* from 2-6 car service example, above being from painter/author example
     public ProductService(){

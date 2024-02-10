@@ -55,6 +55,19 @@ public class ProductController {
                 context.status(400);
             }
         });
+        //1: product ID found
+        //2: product ID not found
+        api.get("product/{id}", context -> {
+            long id = Long.parseLong(context.pathParam("id"));
+            Product p = productService.getProductById(id);
+            if (p == null){
+                context.status(404);
+                context.json("Product not found.");
+            }else{
+                context.json(p);
+                context.status(200);
+            }
+        });
         return api;
     }
 
