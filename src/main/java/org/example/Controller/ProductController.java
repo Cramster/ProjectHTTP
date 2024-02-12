@@ -72,6 +72,10 @@ public class ProductController {
                 context.status(200);
             }
         });
+        //Add Update Product
+
+        //Add Delete Product
+
         return api;
     }
 

@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
 
+    public static Logger log = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
 //instantiate + inject all dependencies-
         SellerService sellerService = new SellerService();
