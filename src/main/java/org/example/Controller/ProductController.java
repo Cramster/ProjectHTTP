@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
 import org.example.Exception.ProductException;
+import org.example.Exception.SellerException;
 import org.example.Model.Seller;
 import org.example.Service.ProductService;
 import org.example.Service.SellerService;
@@ -39,11 +40,15 @@ public class ProductController {
             try{
                 ObjectMapper om = new ObjectMapper();
                 Seller s = om.readValue(context.body(), Seller.class);
+                Seller newSeller = sellerService.addSeller(s);
                 sellerService.addSeller(s);
                 context.status(201);
+                context.json(newSeller);
             }catch(JsonProcessingException e){
                 context.status(400);
-            }
+            }catch (SellerException e){
+                context.result(e.getMessage());
+                context.status(400);}
         });
         api.post("product", context -> {
             try {
