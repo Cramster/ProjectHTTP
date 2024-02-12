@@ -41,7 +41,7 @@ public class ProductController {
                 ObjectMapper om = new ObjectMapper();
                 Seller s = om.readValue(context.body(), Seller.class);
                 Seller newSeller = sellerService.addSeller(s);
-                sellerService.addSeller(s);
+                //sellerService.addSeller(s);
                 context.status(201);
                 context.json(newSeller);
             }catch(JsonProcessingException e){
@@ -55,6 +55,7 @@ public class ProductController {
                 ObjectMapper om = new ObjectMapper();
                 Product p = om.readValue(context.body(), Product.class);
                 Product newProduct = productService.addProduct(p);
+                //productService.addProduct(p);
                 context.status(201);
                 context.json(newProduct);
             }catch (JsonProcessingException e){
@@ -73,14 +74,37 @@ public class ProductController {
                 context.status(404);
                 context.json("Product not found.");
             }else{
-                context.json(p);
+                context.json("Product found:\n"+p);
+                context.status(200);
+            }
+        });
+        //Get Seller by ID
+        api.get("seller/{id}", context -> {
+            long id = Long.parseLong(context.pathParam("id"));
+            Seller s = sellerService.getSellerById(id);
+            if (s == null){
+                context.status(404);
+                context.json("Seller not found.");
+            }else{
+                context.json("Seller found:\n"+s);
                 context.status(200);
             }
         });
         //Add Update Product
-
+            //code here for update
         //Add Delete Product
-
+        api.delete("product/{id}", context -> {
+            long id = Long.parseLong(context.pathParam("id"));
+            Product p = productService.getProductById(id);
+            if (p == null){
+                context.status(404);
+                context.json("Product not found.");
+            }else{
+                context.json(p);
+                context.status(200);
+                context.json("Product removed.");
+            }
+        });
         return api;
     }
 

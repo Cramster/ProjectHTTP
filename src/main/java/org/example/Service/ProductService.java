@@ -29,7 +29,15 @@ public class ProductService {
         productList.add(p);
         return p;
     }
-
+/*
+    //ProductService method to delete posted product
+    public Product deleteProduct(Product p) {
+        Main.log.info("Attempting to delete Product: " + p);
+        p.setId(id);
+        productList.delete(id);
+        return p;
+    }
+*/
     public Product getProductById(Long id){
         for(int i = 0; i < productList.size(); i++){
             Product currentProduct = productList.get(i);
@@ -39,6 +47,7 @@ public class ProductService {
         }
         return null;
     }
+
 
 /* from 2-6 car service example, above being from painter/author example
     public ProductService(){
