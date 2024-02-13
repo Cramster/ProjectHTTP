@@ -98,14 +98,14 @@ public class ProductController {
         api.delete("product/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
             Product p = productService.deleteProductById(id);
-            if (p == null){
-                context.status(404);
-                context.json("Product not found.");
-            }else{
-                context.json(p);
+            //if (p == null){
                 context.status(200);
-                context.json("Product removed.");
-            }
+                context.json("Product now removed.");
+            //}else{
+            //    context.json(p);
+            //    context.status(200);
+            //    context.json("Product removed.");
+            //}
         });
 
         //-Add Update Product/Seller
