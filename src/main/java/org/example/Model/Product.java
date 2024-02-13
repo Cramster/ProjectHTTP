@@ -2,9 +2,9 @@ package org.example.Model;
 import java.util.Objects;
 public class Product {
 
-    public String make;
+    public String brand;
     public String model;
-    public int year;
+    public double price;
     public long id;
 
     public long getId() {
@@ -15,20 +15,19 @@ public class Product {
     }
 
     public Product() {
-
     }
 
-    public Product(String make, String model, int year) {
-        this.make = make;
+    public Product(String brand, String model, double price) {
+        this.brand = brand;
         this.model = model;
-        this.year = year;
+        this.price = price;
     }
 
-    public String getMake() {
-        return make;
+    public String getBrand() {
+        return brand;
     }
-    public void setMake(String make) {
-        this.make = make;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
     public String getModel() {
         return model;
@@ -36,11 +35,11 @@ public class Product {
     public void setModel(String model) {
         this.model = model;
     }
-    public int getYear() {
-        return year;
+    public double getPrice() {
+        return price;
     }
-    public void setYear(int year) {
-        this.year = year;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -48,20 +47,20 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return year == product.year && Objects.equals(make, product.make) && Objects.equals(model, product.model);
+        return price == product.price && Objects.equals(brand, product.brand) && Objects.equals(model, product.model);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(make, model, year);
+        return Objects.hash(brand, model, price);
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "make='" + make + '\'' +
+                "make='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", year=" + year +
+                ", year=" + price +
                 '}';
     }
 }

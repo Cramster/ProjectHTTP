@@ -21,8 +21,8 @@ public class ProductService {
 
     public Product addProduct(Product p) throws ProductException {
         Main.log.info("Attempting to add Product: " + p);
-        if(p.getMake() == null || p.getModel() == null){
-            throw new ProductException("Make and Model fields must be non-null.");
+        if(p.getBrand() == null || p.getModel() == null){
+            throw new ProductException("Brand and Model fields must be non-null.");
         }
         long id = (long) (Math.random() * Long.MAX_VALUE);
         p.setId(id);
