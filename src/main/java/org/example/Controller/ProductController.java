@@ -27,6 +27,7 @@ public class ProductController {
         api.get("health", context -> {
             context.result("Server is running! :-)");
         });
+
         //GET + POST for both seller/product
         api.get("seller", context -> {
             List<Seller> sellerList = sellerService.getSellerList();
@@ -36,6 +37,7 @@ public class ProductController {
             List<Product> productList = productService.getProductList();
             context.json(productList);
         });
+
         api.post("seller", context -> {
             try{
                 ObjectMapper om = new ObjectMapper();
@@ -43,7 +45,7 @@ public class ProductController {
                 Seller newSeller = sellerService.addSeller(s);
                 //sellerService.addSeller(s);
                 context.status(201);
-                context.json(newSeller);
+                context.json("Seller added:\n"+newSeller);
             }catch(JsonProcessingException e){
                 context.status(400);
             }catch (SellerException e){
@@ -57,7 +59,7 @@ public class ProductController {
                 Product newProduct = productService.addProduct(p);
                 //productService.addProduct(p);
                 context.status(201);
-                context.json(newProduct);
+                context.json("Product added:\n"+newProduct);
             }catch (JsonProcessingException e){
                 context.status(400);
             }catch (ProductException e){
@@ -65,6 +67,7 @@ public class ProductController {
                 context.status(400);
             }
         });
+
         //1: product ID found
         //2: product ID not found
         api.get("product/{id}", context -> {
@@ -90,12 +93,11 @@ public class ProductController {
                 context.status(200);
             }
         });
-        //Add Update Product
-            //code here for update
+
         //Add Delete Product
         api.delete("product/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
-            Product p = productService.getProductById(id);
+            Product p = productService.deleteProductById(id);
             if (p == null){
                 context.status(404);
                 context.json("Product not found.");
@@ -105,6 +107,9 @@ public class ProductController {
                 context.json("Product removed.");
             }
         });
+
+        //-Add Update Product/Seller
+        //code here for Product/Seller Updater
         return api;
     }
 
