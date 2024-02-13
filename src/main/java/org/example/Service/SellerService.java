@@ -24,7 +24,6 @@ public class SellerService {
 //    }
 
     public Seller addSeller(Seller s) throws SellerException {
-        Main.log.info("Attempting to add Seller: " + s);
         if(s.getName() == null || s.getName().isEmpty()){
             throw new SellerException("Please enter a name for the seller.");
         }

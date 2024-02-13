@@ -1,6 +1,5 @@
 package org.example.Service;
 import org.example.Exception.ProductException;
-import org.example.Main;
 import org.example.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ public class ProductService {
     SellerService sellerService;
     List<Product> productList;
 
-    public ProductService(SellerService sellerService) {
+    public ProductService() {
         this.sellerService = sellerService;
         productList = new ArrayList<>();
     }
@@ -20,7 +19,6 @@ public class ProductService {
     }
 
     public Product addProduct(Product p) throws ProductException {
-        Main.log.info("Attempting to add Product: " + p);
         if(p.getBrand() == null || p.getModel() == null){
             throw new ProductException("Brand and Model fields must be non-null.");
         }
