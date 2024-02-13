@@ -44,4 +44,15 @@ public class SellerService {
         return null;
     }
 
+    //ProductService method to delete posted product
+    public Seller deleteSellerById(Long id) {
+        for (int i = 0; i < sellerList.size(); i++) {
+            Seller currentSeller = sellerList.get(i);
+            if (sellerList.get(i).getId() == id) {
+                sellerList.remove(i);
+            }
+        }
+        return null;
+    }
+
 }

@@ -107,6 +107,13 @@ public class ProductController {
             //    context.json("Product removed.");
             //}
         });
+        //Add Delete Seller
+        api.delete("seller/{id}", context -> {
+            long id = Long.parseLong(context.pathParam("id"));
+            Seller s = sellerService.deleteSellerById(id);
+            context.status(200);
+            context.json("Seller now removed.");
+        });
 
         //-Add Update Product/Seller
         //code here for Product/Seller Updater
