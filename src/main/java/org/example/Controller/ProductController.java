@@ -55,14 +55,33 @@ public class ProductController {
         api.post("product", context -> {
             try {
                 ObjectMapper om = new ObjectMapper();
-                Product p = om.readValue(context.body(), Product.class);
-                Product newProduct = productService.addProduct(p);
-                //productService.addProduct(p);
+                Product product = om.readValue(context.body(), Product.class);
+
+                // Check if seller information is included
+                if (product.getName() == null) {
+                    context.status(400);
+                    context.result("Seller information is required.");
+                    return;
+                }
+                // Fetch the existing seller by name
+                String sellerName = product.getName();
+                //Seller existingSeller = sellerService.getSellerByName(sellerName);
+                // Check if the seller exists
+                if (sellerName == null) {
+                    context.status(400);
+                    context.result("Seller with name '" + sellerName + "' does not exist.");
+                    return;
+                }
+                // Associate the existing seller with the product
+                product.setName(sellerName);
+                // Add the product to the database
+                Product newProduct = productService.addProduct(product);
+                // Return success response
                 context.status(201);
-                context.json("Product added:\n"+newProduct);
-            }catch (JsonProcessingException e){
+                context.json("Product added:\n" + newProduct);
+            } catch (JsonProcessingException e) {
                 context.status(400);
-            }catch (ProductException e){
+            } catch (ProductException e) {
                 context.result(e.getMessage());
                 context.status(400);
             }

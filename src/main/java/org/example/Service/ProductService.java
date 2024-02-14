@@ -24,12 +24,17 @@ public class ProductService {
     //////////////////CRUD FOR PRODUCT LIST//////////////////
     //ADD PRODUCT P to LIST
     public Product addProduct(Product p) throws ProductException {
-        if (p.getBrand() == null || p.getModel() == null) {
-            throw new ProductException("Brand and Model fields must be non-null.");
+    /*    if (p.getBrand() == null || p.getModel() == null || p.getSeller() == null) {
+            throw new ProductException("Brand, Model, and Seller fields must be non-null.");
         }
+     */
+        //Generate product ID
         long id = (long) (Math.random() * Long.MAX_VALUE);
+        //Set ID to product
         p.setId(id);
+        //Add product to Array
         productList.add(p);
+        //return product
         return p;
     }
 
@@ -57,7 +62,6 @@ public class ProductService {
 
     //UPDATE PRODUCT P in LIST
     public Product updateProductInList(Product p){
-
         return p;
     }
 

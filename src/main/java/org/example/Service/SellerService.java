@@ -34,6 +34,16 @@ public class SellerService {
         return s;
     }
 
+    //RETURN SELLER s by name
+    public Seller getSellerByName(String name) {
+        for (int i = 0; i < sellerList.size(); i++){
+            Seller currentSeller = sellerList.get(i);
+            if(sellerList.get(i).getName().equals(name))
+                return currentSeller;
+        }
+        return null;
+    }
+
     //RETURN SELLER s (by ID) from sellerList
     public Seller getSellerById(Long id){
         for(int i = 0; i < sellerList.size(); i++){
