@@ -24,11 +24,10 @@ public class ProductService {
     //////////////////CRUD FOR PRODUCT LIST//////////////////
     //ADD PRODUCT P to LIST
     public Product addProduct(Product p) throws ProductException {
-    /*    if (p.getBrand() == null || p.getModel() == null || p.getSeller() == null) {
-            throw new ProductException("Brand, Model, and Seller fields must be non-null.");
+        if (p.getBrand() == null || p.getModel() == null || p.getPrice() <= 0 || p.getName() == null) {
+            throw new ProductException("Brand, Model, Price, and Name fields must be non-null.");
         }
-     */
-        //Generate product ID
+        //check for existing seller?
         long id = (long) (Math.random() * Long.MAX_VALUE);
         //Set ID to product
         p.setId(id);

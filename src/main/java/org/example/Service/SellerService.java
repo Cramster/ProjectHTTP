@@ -28,6 +28,8 @@ public class SellerService {
         if(s.getName() == null || s.getName().isEmpty()){
             throw new SellerException("Please enter a name for the seller.");
         }
+        //else if s.getName = seller already in list
+        //add logic to check for existing seller
         long id = (long) (Math.random() * Long.MAX_VALUE);
         s.setId(id);
         sellerList.add(s);
@@ -44,7 +46,7 @@ public class SellerService {
         return null;
     }
 
-    //RETURN SELLER s (by ID) from sellerList
+    //RETURN SELLER s by id
     public Seller getSellerById(Long id){
         for(int i = 0; i < sellerList.size(); i++){
             Seller currentSeller = sellerList.get(i);

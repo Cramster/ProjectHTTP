@@ -45,7 +45,7 @@ public class ProductController {
                 Seller newSeller = sellerService.addSeller(s);
                 //sellerService.addSeller(s);
                 context.status(201);
-                context.json("Seller added:\n"+newSeller);
+                context.json("Seller added:\n" + newSeller);
             }catch(JsonProcessingException e){
                 context.status(400);
             }catch (SellerException e){
@@ -56,24 +56,8 @@ public class ProductController {
             try {
                 ObjectMapper om = new ObjectMapper();
                 Product product = om.readValue(context.body(), Product.class);
-
-                // Check if seller information is included
-                if (product.getName() == null) {
-                    context.status(400);
-                    context.result("Seller information is required.");
-                    return;
-                }
-                // Fetch the existing seller by name
-                String sellerName = product.getName();
-                //Seller existingSeller = sellerService.getSellerByName(sellerName);
-                // Check if the seller exists
-                if (sellerName == null) {
-                    context.status(400);
-                    context.result("Seller with name '" + sellerName + "' does not exist.");
-                    return;
-                }
                 // Associate the existing seller with the product
-                product.setName(sellerName);
+                // product.setName();
                 // Add the product to the database
                 Product newProduct = productService.addProduct(product);
                 // Return success response
