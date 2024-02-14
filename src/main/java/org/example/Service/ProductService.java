@@ -11,9 +11,9 @@ public class ProductService {
     List<Product> productList; //Create new list of Products (productList)
 
     //Make a new ArrayList of products to interact with + import the instance of sellerService
-    public ProductService() {
+    public ProductService(SellerService sellerService) {
+        this.productList = new ArrayList<>();
         this.sellerService = sellerService;
-        productList = new ArrayList<>();
     }
 
     //Method to return the list of products in this instance of ProductService
@@ -57,6 +57,7 @@ public class ProductService {
 
     //UPDATE PRODUCT P in LIST
     public Product updateProductInList(Product p){
+
         return p;
     }
 

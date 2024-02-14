@@ -3,6 +3,8 @@ import io.javalin.Javalin;
 import org.example.Controller.ProductController;
 import org.example.Service.ProductService;
 import org.example.Service.SellerService;
+import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -11,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 //instantiate + inject all dependencies-
         SellerService sellerService = new SellerService();
-        ProductService productService = new ProductService();
+        ProductService productService = new ProductService(sellerService);
         ProductController productController = new ProductController(sellerService, productService);
         Javalin api = productController.getAPI();
         api.start(9004); //increment from previous iteration 9003
