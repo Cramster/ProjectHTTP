@@ -9,20 +9,21 @@ import java.util.List;
 
 public class SellerService {
 
-    List<Seller> sellerList;
+    //Create new list of Sellers (sellerList)
+    List<Seller> sellerList; //Create new list of Sellers
 
+    //Make a new ArrayList of sellers to CRUD with
     public SellerService(){
         this.sellerList = new ArrayList<>();
     }
+
+    //Return all Sellers in the ArrayList
     public List<Seller> getSellerList(){
         return sellerList;
     }
 
-//Code prior to adding unique ID
-//    public void addSeller(Seller s){
-//        sellerList.add(s);
-//    }
-
+    //////////////////CRUD FOR SELLER LIST//////////////////
+    //ADD SELLER s to sellerList
     public Seller addSeller(Seller s) throws SellerException {
         if(s.getName() == null || s.getName().isEmpty()){
             throw new SellerException("Please enter a name for the seller.");
@@ -33,6 +34,7 @@ public class SellerService {
         return s;
     }
 
+    //RETURN SELLER s (by ID) from sellerList
     public Seller getSellerById(Long id){
         for(int i = 0; i < sellerList.size(); i++){
             Seller currentSeller = sellerList.get(i);
@@ -43,15 +45,23 @@ public class SellerService {
         return null;
     }
 
-    //ProductService method to delete posted product
+    //DELETE SELLER s in sellerList
     public Seller deleteSellerById(Long id) {
+        //Check the list for currentSeller
         for (int i = 0; i < sellerList.size(); i++) {
             Seller currentSeller = sellerList.get(i);
+            //if currentSeller matches id of any existing in list
             if (sellerList.get(i).getId() == id) {
+                //remove that currentSeller (i)
                 sellerList.remove(i);
             }
         }
         return null;
+    }
+
+    //UPDATE SELLER s in sellerList
+    public Seller updateSellerInList(Seller s){
+        return s;
     }
 
 }
