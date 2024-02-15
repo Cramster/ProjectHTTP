@@ -5,12 +5,15 @@ import org.example.Main;
 import org.example.Model.Product;
 import org.example.Model.Seller;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SellerService {
 
     //Create new list of Sellers (sellerList)
     List<Seller> sellerList; //Create new list of Sellers
+    //public static Set<String> sellerList = new HashSet<>();
 
     //Make a new ArrayList of sellers to CRUD with
     public SellerService(){
@@ -25,13 +28,17 @@ public class SellerService {
     //////////////////CRUD FOR SELLER LIST//////////////////
     //ADD SELLER s to sellerList
     public Seller addSeller(Seller s) throws SellerException {
-        if(s.getName() == null || s.getName().isEmpty()){
+        //add logic to check for existing seller
+        String sName = s.getName().strip();
+        if (nameReview(sName)){
+            throw new SellerException("Seller name already exists, try again.");
+        }
+        if (s.getName() == null || s.getName().isEmpty()){
             throw new SellerException("Please enter a name for the seller.");
         }
-        //else if s.getName = seller already in list
-        //add logic to check for existing seller
         long id = (long) (Math.random() * Long.MAX_VALUE);
         s.setId(id);
+        s.setName(sName);
         sellerList.add(s);
         return s;
     }
@@ -71,7 +78,19 @@ public class SellerService {
         return null;
     }
 
-    //UPDATE SELLER s in sellerList
+    //Check if seller being added is already in seller list
+    public boolean nameReview(String name){
+        //List<Seller> sellerList = new ArrayList<>(getSellerList());
+        for (int i = 0; i < sellerList.size(); i++){
+            //Seller currentSeller = sellerList.get(i);
+            if (sellerList.get(i).getName().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //UPDATE SELLER s in sellerList - NOT REQUIRED
     public Seller updateSellerInList(Seller s){
         return s;
     }
