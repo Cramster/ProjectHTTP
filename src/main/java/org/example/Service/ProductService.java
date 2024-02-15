@@ -32,8 +32,6 @@ public class ProductService {
         if (!sellerService.nameReview(sName)){
             throw new ProductException("Please add this seller first.");
         }
-
-        //check for existing seller?
         long id = (long) (Math.random() * Long.MAX_VALUE);
         //Set ID to product
         p.setId(id);
@@ -43,7 +41,7 @@ public class ProductService {
         return p;
     }
 
-    //GET PRODUCT P (by ID) from LIST
+    //GET PRODUCT P by ID
     public Product getProductById(Long id) {
         for (int i = 0; i < productList.size(); i++) {
             Product currentProduct = productList.get(i);
@@ -54,10 +52,10 @@ public class ProductService {
         return null;
     }
 
-    //DELETE PRODUCT P in LIST
+    //DELETE PRODUCT P
     public Product deleteProductById(Long id) {
         for (int i = 0; i < productList.size(); i++) {
-            Product currentProduct = productList.get(i);
+            //Product currentProduct = productList.get(i);
             if (productList.get(i).getId() == id) {
                 productList.remove(i);
             }
@@ -65,8 +63,18 @@ public class ProductService {
         return null;
     }
 
-    //UPDATE PRODUCT P in LIST
-    public Product updateProductInList(Product p){
+    //UPDATE PRODUCT P by ID
+    public Product updateProductById(Product p) throws ProductException {
+        //String sName = p.getName().strip();
+        if (!sellerService.nameReview(p.name.strip())){
+            throw new ProductException("Please add this seller first.");
+        }
+        //productInputCheck if logic pending
+        Product currentProduct = getProductById(p.getId());
+        currentProduct.setBrand(p.brand);
+        currentProduct.setModel(p.model);
+        currentProduct.setPrice(p.price);
+        currentProduct.setName(p.name.strip());
         return p;
     }
 

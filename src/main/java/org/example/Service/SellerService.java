@@ -90,8 +90,8 @@ public class SellerService {
         return false;
     }
 
-    //UPDATE SELLER s in sellerList - NOT REQUIRED
-    public Seller updateSellerInList(Seller s){
+    //NOT REQUIRED
+    public Seller updateSellerById(Seller s){
         return s;
     }
 

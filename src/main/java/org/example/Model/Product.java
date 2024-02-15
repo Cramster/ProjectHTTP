@@ -5,8 +5,8 @@ public class Product {
     public String brand;
     public String model;
     public double price;
-    public long id;
     public String name;
+    public long id;
 
     public Product(){
 
@@ -16,8 +16,8 @@ public class Product {
         this.brand = brand;
         this.model = model;
         this.price = price;
-        this.id = id;
         this.name = name;
+        this.id = id;
     }
 
     public String getBrand() {
@@ -44,20 +44,20 @@ public class Product {
         this.price = price;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, model, price, id, name);
+        return Objects.hash(brand, model, price, name, id);
     }
 
     @Override

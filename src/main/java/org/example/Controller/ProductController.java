@@ -23,21 +23,22 @@ public class ProductController {
     }
 
     public Javalin getAPI() {
+        //Health check
         Javalin api = Javalin.create();
         api.get("health", context -> {
             context.result("Server is running! :-)");
         });
-
-        //GET + POST for both seller/product
+        //Return list of Sellers
         api.get("seller", context -> {
             List<Seller> sellerList = sellerService.getSellerList();
             context.json(sellerList);
         });
+        //Return list of Products
         api.get("product", context -> {
             List<Product> productList = productService.getProductList();
             context.json(productList);
         });
-
+        //Post new Seller
         api.post("seller", context -> {
             try{
                 ObjectMapper om = new ObjectMapper();
@@ -52,6 +53,7 @@ public class ProductController {
                 context.result(e.getMessage());
                 context.status(400);}
         });
+        //Post new Product
         api.post("product", context -> {
             try {
                 ObjectMapper om = new ObjectMapper();
@@ -70,9 +72,7 @@ public class ProductController {
                 context.status(400);
             }
         });
-
-        //1: product ID found
-        //2: product ID not found
+        //Retrieve product by ID
         api.get("product/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
             Product p = productService.getProductById(id);
@@ -84,7 +84,7 @@ public class ProductController {
                 context.status(200);
             }
         });
-        //Get Seller by ID
+        //Retrieve seller by ID
         api.get("seller/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
             Seller s = sellerService.getSellerById(id);
@@ -96,21 +96,15 @@ public class ProductController {
                 context.status(200);
             }
         });
-
-        //Add Delete Product
+        //Delete Product by ID
         api.delete("product/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
             Product p = productService.deleteProductById(id);
             //if (p == null){
                 context.status(200);
                 context.json("Product now removed.");
-            //}else{
-            //    context.json(p);
-            //    context.status(200);
-            //    context.json("Product removed.");
-            //}
         });
-        //Add Delete Seller
+        //Delete Seller by ID
         api.delete("seller/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
             Seller s = sellerService.deleteSellerById(id);
@@ -118,51 +112,22 @@ public class ProductController {
             context.json("Seller now removed.");
         });
 
-        //-Add Update Product/Seller
-        //code here for Product/Seller Updater
+        //UPDATE Product by ID
+        api.put("product/{id}", ctx -> {
+            try{
+                ObjectMapper om = new ObjectMapper();
+                Product p = om.readValue(ctx.body(), Product.class);
+                Product updateProduct = productService.updateProductById(p);
+                ctx.status(201);
+                ctx.json(updateProduct);
+            } catch (JsonProcessingException e) {
+                ctx.result(e.getMessage());
+                ctx.status(400);
+            } catch (ProductException e){
+                ctx.result(e.getMessage());
+                ctx.status(400);
+            }
+        });
         return api;
     }
-
-
-/*
-    static ProductService productService;
-
-    public ProductController() {
-        this.productService = new ProductService();
-    }
-
-    public Javalin getAPI(){
-        Javalin api = Javalin.create();
-
-        api.get("/health/", context -> {
-            context.result("The server is running!");
-            } );
-
-        api.get("/product/", ProductController::getAllProductHandler);
-        api.post("/product/", ProductController::postProductHandler);
-
-        return api;
-    }
-
-    public static void getAllProductHandler(Context context){
-        List<Product> productList = productService.getAllProducts();
-        context.json(productList);
-    }
-
-    public static void postProductHandler(Context context){
-        ObjectMapper om = new ObjectMapper();
-        try{
-            Product p = om.readValue(context.body(), Product.class);
-            //Product newProduct = new Product("default", "default", 0);
-            productService.insertProduct(p);
-            context.status(201);
-            //Resource created from 201
-        } catch (JsonProcessingException e){
-            context.status(400);
-            //Jackson unable to parseJSON or user error so 400
-        }
-    }
- */
-
-
 }
