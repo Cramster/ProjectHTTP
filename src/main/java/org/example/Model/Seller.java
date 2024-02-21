@@ -13,6 +13,7 @@ public class Seller {
     }
 
     public Seller(){
+
     }
 
     public Seller(String name) {

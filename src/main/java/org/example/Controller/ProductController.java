@@ -1,8 +1,6 @@
 package org.example.Controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.javalin.http.Context;
 import org.example.Exception.ProductException;
 import org.example.Exception.SellerException;
 import org.example.Model.Seller;
@@ -43,8 +41,8 @@ public class ProductController {
             try{
                 ObjectMapper om = new ObjectMapper();
                 Seller s = om.readValue(context.body(), Seller.class);
+                //Add seller to the database
                 Seller newSeller = sellerService.addSeller(s);
-                //sellerService.addSeller(s);
                 context.status(201);
                 context.json("Seller added:\n" + newSeller);
             }catch(JsonProcessingException e){
@@ -58,13 +56,12 @@ public class ProductController {
             try {
                 ObjectMapper om = new ObjectMapper();
                 Product product = om.readValue(context.body(), Product.class);
-                // Associate the existing seller with the product
-                // product.setName();
                 // Add the product to the database
                 Product newProduct = productService.addProduct(product);
                 // Return success response
                 context.status(201);
                 context.json("Product added:\n" + newProduct);
+                //Return failed response
             } catch (JsonProcessingException e) {
                 context.status(400);
             } catch (ProductException e) {

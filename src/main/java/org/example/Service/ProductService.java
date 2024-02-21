@@ -1,6 +1,5 @@
 package org.example.Service;
 import org.example.Exception.ProductException;
-import org.example.Exception.SellerException;
 import org.example.Model.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,9 @@ public class ProductService {
     //////////////////CRUD FOR PRODUCT LIST//////////////////
     //ADD PRODUCT P to LIST
     public Product addProduct(Product p) throws ProductException {
-        if (p.getBrand() == null || p.getModel() == null || p.getPrice() <= 0 || p.getName() == null) {
-            throw new ProductException("Brand, Model, Price, and Name fields must be non-null.");
+        if (p.getBrand() == null || p.getModel() == null || p.getPrice() <= 0 || p.getName() == null)
+        {
+            throw new ProductException("Brand, Model, Price, and Name fields can't be null.");
         }
         String sName = p.getName().strip();
         if (!sellerService.nameReview(sName)){
@@ -65,7 +65,6 @@ public class ProductService {
 
     //UPDATE PRODUCT P by ID
     public Product updateProductById(Product p) throws ProductException {
-        //String sName = p.getName().strip();
         if (!sellerService.nameReview(p.name.strip())){
             throw new ProductException("Please add this seller first.");
         }
