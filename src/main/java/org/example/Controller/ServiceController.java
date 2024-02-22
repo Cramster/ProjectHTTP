@@ -10,12 +10,12 @@ import org.example.Model.Product;
 import io.javalin.Javalin;
 import java.util.List;
 
-public class ProductController {
+public class ServiceController {
 
     SellerService sellerService;
     ProductService productService;
 
-    public ProductController(SellerService sellerService, ProductService productService) {
+    public ServiceController(SellerService sellerService, ProductService productService) {
         this.sellerService = sellerService;
         this.productService = productService;
     }
