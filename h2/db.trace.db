@@ -1,0 +1,132 @@
+2024-02-23 14:38:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aINSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a[*](2, 'Noah')"; SQL statement:
+
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 14:55:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aINSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a[*](2, 'Noah')"; SQL statement:
+
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 14:58:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aINSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a[*](2, 'Noah')"; SQL statement:
+
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aINSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a[*](2, 'Noah')"; SQL statement:
+
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:13:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:15:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:17:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:17:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:18:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:24:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:24:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:24:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:25:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:25:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:31:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:32:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:32:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:39:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000aCREATE TABLE Seller (\000d\000a    seller_id int primary key,\000d\000a    name varchar(255) NOT NULL\000d\000a)\000d\000a[*]INSERT INTO Seller (seller_id, name)\000d\000aVALUES\000d\000a(1, 'Marc')\000d\000a(2, 'Noah')"; SQL statement:
+
+CREATE TABLE Seller (
+    seller_id int primary key,
+    name varchar(255) NOT NULL
+)
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc')
+(2, 'Noah') [42000-214]
+2024-02-23 15:39:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]
+2024-02-23 15:39:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SELLER" not found (this database is empty); SQL statement:
+select * from Seller [42104-214]

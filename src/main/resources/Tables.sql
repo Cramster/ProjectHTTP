@@ -6,3 +6,7 @@ CREATE TABLE Seller (
     seller_id int primary key,
     name varchar(255) NOT NULL
 );
+INSERT INTO Seller (seller_id, name)
+VALUES
+(1, 'Marc'),
+(2, 'Noah');

@@ -30,22 +30,22 @@ public class ConnectionSingleton {
      * a static object which represents the connection to h2. Because it is static, any DAO interacting
      * with this connection object is referring to the same object.
      */
-    private static Connection connection = null;
+    private static Connection conn = null;
     /**
      * @return an active connection to the database and set up the database tables if this is the first time the
      * Connection has been established
      */
     public static Connection getConnection(){
-        if(connection == null){
+        if(conn == null){
             try {
-                connection = DriverManager.getConnection(url, username, password);
+                conn = DriverManager.getConnection(url, username, password);
                 resetTestDatabase();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
 
-        return connection;
+        return conn;
     }
     /**
      * For the purpose of testing, we will need to drop and recreate our database tables to keep it consistent across
@@ -53,13 +53,13 @@ public class ConnectionSingleton {
      */
     public static void resetTestDatabase(){
 //        if there is no connection, use the getConnection method to set it up
-        if(connection == null){
+        if(conn == null){
             getConnection();
         }else {
 //            otherwise, recreate the tables without setting up a new connection
             try {
                 FileReader sqlReader = new FileReader("src/main/resources/Tables.sql");
-                RunScript.execute(connection, sqlReader);
+                RunScript.execute(conn, sqlReader);
             } catch (SQLException | FileNotFoundException e) {
                 e.printStackTrace();
             }

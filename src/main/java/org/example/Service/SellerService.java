@@ -1,4 +1,5 @@
 package org.example.Service;
+import org.example.DAO.SellerDAO;
 import org.example.Exception.ProductException;
 import org.example.Exception.SellerException;
 import org.example.Main;
@@ -11,18 +12,28 @@ import java.util.Set;
 
 public class SellerService {
 
+    SellerDAO sellerDAO;
+
+    //Make a new ArrayList of sellers to CRUD with
+    public SellerService(SellerDAO sellerDAO){
+        this.sellerDAO = sellerDAO;
+        this.sellerList = new ArrayList<>();
+    }
+
     //Create new list of Sellers (sellerList)
     List<Seller> sellerList;
     //public static Set<String> sellerList = new HashSet<>();
 
-    //Make a new ArrayList of sellers to CRUD with
-    public SellerService(){
-        this.sellerList = new ArrayList<>();
+    //2.23 DAO
+    public void saveSeller(){
+
     }
 
     //Return all Sellers in the ArrayList
     public List<Seller> getSellerList(){
-        return sellerList;
+        List<Seller> sellerList = sellerDAO.getAllSeller(); //2.23 DAO code addition
+        //System.out.println(sellerList);
+        return sellerList; //in DAO demo 'return null;' (this.sellerList to revert)
     }
 
     //////////////////CRUD FOR SELLER LIST//////////////////

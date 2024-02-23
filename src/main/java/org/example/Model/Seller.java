@@ -16,6 +16,11 @@ public class Seller {
 
     }
 
+    public Seller(int sellerId, String sellerName){
+        this.id = sellerId;
+        this.name = sellerName;
+    }
+
     public Seller(String name) {
         this.name = name;
     }
