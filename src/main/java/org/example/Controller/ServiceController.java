@@ -41,8 +41,8 @@ public class ServiceController {
             try{
                 ObjectMapper om = new ObjectMapper();
                 Seller s = om.readValue(context.body(), Seller.class);
-                //Add seller to the database
-                Seller newSeller = sellerService.addSeller(s);
+                sellerService.saveSeller(s); //2.23 for DAO
+                Seller newSeller = sellerService.addSeller(s); //Add seller to the database
                 context.status(201);
                 context.json("Seller added:\n" + newSeller);
             }catch(JsonProcessingException e){

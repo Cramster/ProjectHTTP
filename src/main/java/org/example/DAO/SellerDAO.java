@@ -26,7 +26,6 @@ public class SellerDAO {
                 String sellerName = resultSet.getString("name");
                 Seller s = new Seller(sellerId, sellerName);
                 sellerResults.add(s);
-                //System.out.println(s);
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -34,7 +33,15 @@ public class SellerDAO {
         return sellerResults;
     }
 
-    public void insertSeller(){
-        //
+    public void insertSeller(Seller s){
+        try{
+            PreparedStatement ps = conn.prepareStatement("insert into " +
+                    "Seller (seller_id, name) values (?, ?)");
+            ps.setLong(1, s.getId()); //ps.setInt for artist version
+            ps.setString(2, s.getName());
+            ps.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }

@@ -24,15 +24,14 @@ public class SellerService {
     List<Seller> sellerList;
     //public static Set<String> sellerList = new HashSet<>();
 
-    //2.23 DAO
-    public void saveSeller(){
-
+    //2.23 for DAO
+    public void saveSeller(Seller s){
+        sellerDAO.insertSeller(s);
     }
 
     //Return all Sellers in the ArrayList
     public List<Seller> getSellerList(){
         List<Seller> sellerList = sellerDAO.getAllSeller(); //2.23 DAO code addition
-        //System.out.println(sellerList);
         return sellerList; //in DAO demo 'return null;' (this.sellerList to revert)
     }
 
