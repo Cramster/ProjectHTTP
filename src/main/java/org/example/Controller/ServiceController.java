@@ -57,13 +57,11 @@ public class ServiceController {
         api.post("product", context -> {
             try {
                 ObjectMapper om = new ObjectMapper();
-                Product product = om.readValue(context.body(), Product.class);
-                // Add the product to the database
-                Product newProduct = productService.addProduct(product);
-                // Return success response
+                Product p = om.readValue(context.body(), Product.class);
+                productService.saveProduct(p); //2.24 for DAO
+                Product newProduct = productService.addProduct(p);
                 context.status(201);
                 context.json("Product added:\n" + newProduct);
-                //Return failed response
             } catch (JsonProcessingException e) {
                 context.status(400);
             } catch (ProductException e) {

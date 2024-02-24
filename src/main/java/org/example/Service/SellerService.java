@@ -16,8 +16,7 @@ public class SellerService {
         this.sellerList = new ArrayList<>();
     }
 
-    //Create new list of Sellers (sellerList)
-    List<Seller> sellerList;
+    List<Seller> sellerList; //Create new list of Sellers (sellerList)
     //unused - public static Set<String> sellerList = new HashSet<>();
 
     //Return all Sellers in the ArrayList

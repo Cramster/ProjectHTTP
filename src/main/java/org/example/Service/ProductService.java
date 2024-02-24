@@ -13,6 +13,7 @@ import java.util.List;
 public class ProductService {
 
     ProductDAO productDAO;
+    SellerService sellerService; //imported so we can use the instance of sellerService
 
     //Make a new ArrayList of products to interact with + import the instance of sellerService
     public ProductService(SellerService sellerService, ProductDAO productDAO) {
@@ -21,7 +22,6 @@ public class ProductService {
         this.productList = new ArrayList<>();
     }
 
-    SellerService sellerService; //imported so we can use the instance of sellerService
     List<Product> productList; //Create new list of Products (productList)
 
     //Method to return the list of products in this instance of ProductService
