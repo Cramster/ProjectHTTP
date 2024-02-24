@@ -1,24 +1,38 @@
 package org.example.Service;
+import org.example.DAO.ProductDAO;
 import org.example.Exception.ProductException;
+import org.example.Exception.ProductNotFoundException;
+import org.example.Exception.SellerNotFoundException;
 import org.example.Model.Product;
+import org.example.Model.Seller;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //SELLER SERVICE to be USED by PRODUCT CONTROLLER
 public class ProductService {
 
+    ProductDAO productDAO;
+
+    //Make a new ArrayList of products to interact with + import the instance of sellerService
+    public ProductService(SellerService sellerService, ProductDAO productDAO) {
+        this.productDAO = productDAO;
+        this.sellerService = sellerService;
+        this.productList = new ArrayList<>();
+    }
+
     SellerService sellerService; //imported so we can use the instance of sellerService
     List<Product> productList; //Create new list of Products (productList)
 
-    //Make a new ArrayList of products to interact with + import the instance of sellerService
-    public ProductService(SellerService sellerService) {
-        this.productList = new ArrayList<>();
-        this.sellerService = sellerService;
-    }
-
     //Method to return the list of products in this instance of ProductService
     public List<Product> getProductList() {
-        return productList;
+        List<Product> productList = productDAO.getAllProduct(); //2.24 DAO code addition
+        return productList; //in DAO demo 'return null;' (this.productList to revert)
+    }
+
+    //2.24 for ProductDAO
+    public void saveProduct(Product p){
+        productDAO.insertProduct(p);
     }
 
     //////////////////CRUD FOR PRODUCT LIST//////////////////
@@ -41,7 +55,17 @@ public class ProductService {
         return p;
     }
 
-    //GET PRODUCT P by ID
+    //2.24 code for DAO
+    public Product getProductById(int id) throws ProductNotFoundException {
+        Product p = productDAO.getProductById(id);
+        if (p == null) {
+            throw new ProductNotFoundException("Product ID was not found.");
+        } else {
+            return p;
+        }
+    }
+
+    //RETURN PRODUCT p by id
     public Product getProductById(Long id) {
         for (int i = 0; i < productList.size(); i++) {
             Product currentProduct = productList.get(i);
@@ -52,7 +76,7 @@ public class ProductService {
         return null;
     }
 
-    //DELETE PRODUCT P
+    //DELETE PRODUCT  in productList
     public Product deleteProductById(Long id) {
         for (int i = 0; i < productList.size(); i++) {
             //Product currentProduct = productList.get(i);

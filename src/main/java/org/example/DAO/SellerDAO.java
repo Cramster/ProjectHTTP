@@ -44,4 +44,25 @@ public class SellerDAO {
             e.printStackTrace();
         }
     }
+
+    //2.23 DAO code
+    public Seller getSellerById(int id){
+        try{
+            PreparedStatement ps = conn.prepareStatement(
+                    "select * from seller where seller_id = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                int sellerId = rs.getInt("seller_id");
+                String name = rs.getString("name");
+                Seller s = new Seller(sellerId, name);
+                return s;
+            }else {
+                return null;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

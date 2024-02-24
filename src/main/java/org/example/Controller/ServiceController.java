@@ -2,7 +2,9 @@ package org.example.Controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.Exception.ProductException;
+import org.example.Exception.ProductNotFoundException;
 import org.example.Exception.SellerException;
+import org.example.Exception.SellerNotFoundException;
 import org.example.Model.Seller;
 import org.example.Service.ProductService;
 import org.example.Service.SellerService;
@@ -71,16 +73,24 @@ public class ServiceController {
         });
         //Retrieve product by ID
         api.get("product/{id}", context -> {
-            long id = Long.parseLong(context.pathParam("id"));
-            Product p = productService.getProductById(id);
+            //long id = Long.parseLong(context.pathParam("id"));
+            int id = Integer.parseInt(context.pathParam("id"));
+            try{
+                Product p = productService.getProductById(id);
+                context.json(p);
+            }catch (ProductNotFoundException e){
+                context.status(404);
+            }
+            /*
             if (p == null){
                 context.status(404);
                 context.json("Product not found.");
             }else{
                 context.json("Product found:\n"+p);
                 context.status(200);
-            }
+             */
         });
+/*
         //Retrieve seller by ID
         api.get("seller/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));
@@ -93,6 +103,18 @@ public class ServiceController {
                 context.status(200);
             }
         });
+ */
+        //2.23 code for DAO
+        api.get("seller/{id}", context -> {
+            int id = Integer.parseInt(context.pathParam("id"));
+            try{
+                Seller s = sellerService.getSellerById(id);
+                context.json(s);
+            }catch (SellerNotFoundException e){
+                context.status(404);
+            }
+        });
+
         //Delete Product by ID
         api.delete("product/{id}", context -> {
             long id = Long.parseLong(context.pathParam("id"));

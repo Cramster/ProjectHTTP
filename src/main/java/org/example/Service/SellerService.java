@@ -1,14 +1,10 @@
 package org.example.Service;
 import org.example.DAO.SellerDAO;
-import org.example.Exception.ProductException;
 import org.example.Exception.SellerException;
-import org.example.Main;
-import org.example.Model.Product;
+import org.example.Exception.SellerNotFoundException;
 import org.example.Model.Seller;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SellerService {
 
@@ -22,17 +18,17 @@ public class SellerService {
 
     //Create new list of Sellers (sellerList)
     List<Seller> sellerList;
-    //public static Set<String> sellerList = new HashSet<>();
-
-    //2.23 for DAO
-    public void saveSeller(Seller s){
-        sellerDAO.insertSeller(s);
-    }
+    //unused - public static Set<String> sellerList = new HashSet<>();
 
     //Return all Sellers in the ArrayList
     public List<Seller> getSellerList(){
         List<Seller> sellerList = sellerDAO.getAllSeller(); //2.23 DAO code addition
         return sellerList; //in DAO demo 'return null;' (this.sellerList to revert)
+    }
+
+    //2.23 for SellerDAO
+    public void saveSeller(Seller s){
+        sellerDAO.insertSeller(s);
     }
 
     //////////////////CRUD FOR SELLER LIST//////////////////
@@ -51,6 +47,16 @@ public class SellerService {
         s.setName(sName);
         sellerList.add(s);
         return s;
+    }
+
+    //2.23 code for DAO
+    public Seller getSellerById(int id) throws SellerNotFoundException {
+        Seller s = sellerDAO.getSellerById(id);
+        if (s == null){
+            throw new SellerNotFoundException("Seller ID was not found.");
+        }else{
+            return s;
+        }
     }
 
     //RETURN SELLER s by id
