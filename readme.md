@@ -15,7 +15,7 @@
   - Potential seller long ID in seller service conflicting with seller int ID from DAO
 
 ### To Do:
+- <strike>Add Product DB/DAO functionality</strike>
 - Junit 60% coverage
-- Add Product DB/DAO functionality
 - Refactor seller ID from long to int to match service to DAO (nice to have)
 - ServiceController lambda split (nice to have)
