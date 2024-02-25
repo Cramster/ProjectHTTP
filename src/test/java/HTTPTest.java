@@ -1,5 +1,8 @@
+import org.example.DAO.ProductDAO;
+import org.example.DAO.SellerDAO;
 import org.example.Model.Product;
 import org.example.Service.ProductService;
+import org.example.Service.SellerService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
