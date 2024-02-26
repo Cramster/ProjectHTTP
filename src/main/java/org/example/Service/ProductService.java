@@ -2,9 +2,7 @@ package org.example.Service;
 import org.example.DAO.ProductDAO;
 import org.example.Exception.ProductException;
 import org.example.Exception.ProductNotFoundException;
-import org.example.Exception.SellerNotFoundException;
 import org.example.Model.Product;
-import org.example.Model.Seller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,7 @@ import java.util.List;
 public class ProductService {
 
     ProductDAO productDAO;
+
     SellerService sellerService; //imported so we can use the instance of sellerService
 
     //Make a new ArrayList of products to interact with + import the instance of sellerService
@@ -23,6 +22,10 @@ public class ProductService {
     }
 
     List<Product> productList; //Create new list of Products (productList)
+
+    public ProductService() {
+
+    }
 
     //Method to return the list of products in this instance of ProductService
     public List<Product> getProductList() {

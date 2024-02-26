@@ -79,7 +79,6 @@ public class ServiceController {
             }catch (ProductNotFoundException e){
                 context.status(404);
             }
-        });
             /*
             if (p == null){
                 context.status(404);
@@ -88,6 +87,7 @@ public class ServiceController {
                 context.json("Product found:\n"+p);
                 context.status(200);
              */
+        });
 /*
         //Retrieve seller by ID
         api.get("seller/{id}", context -> {
